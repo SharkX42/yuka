@@ -1,8 +1,11 @@
 package com.delmur.javapro.yuka.controllers;
 
+import com.delmur.javapro.yuka.models.Product;
+import com.delmur.javapro.yuka.services.OpenFoodFactService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,27 +17,23 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/api/product")
 public class ProductController {
 
+    private final OpenFoodFactService service;
+
+    @Autowired
+    public ProductController(OpenFoodFactService service) {
+        this.service = service;
+    }
+
     @GetMapping("/all")
-    public ResponseEntity getResourceGroupTotalCost() throws JsonProcessingException {
+    public ResponseEntity<Product> getResourceGroupTotalCost() {
 
-        RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl
-                = "https://fr.openfoodfacts.org/api/v0/produit/7622210449283.json";
-        ResponseEntity<String> response
-                = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
+        try{
+            Product p = service.getByBarCode("7622210449283");
+            return ResponseEntity.ok(p);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
 
-        ObjectMapper mapper = new ObjectMapper();
-
-        JsonNode root = mapper.readTree(response.getBody());
-
-        JsonNode product = root.path("product");
-
-        String product_name = product.path("product_name").toString();
-
-
-
-        //assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
-        return ResponseEntity.ok("test");
     }
 
 }
