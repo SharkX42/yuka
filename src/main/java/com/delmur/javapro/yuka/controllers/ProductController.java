@@ -24,11 +24,11 @@ public class ProductController {
         this.service = service;
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<Product> getResourceGroupTotalCost() {
+    @GetMapping("/{barCode}")
+    public ResponseEntity<Product> getProductByBarCode(@PathVariable String barCode) {
 
         try{
-            Product p = service.getByBarCode("7622210449283");
+            Product p = service.getByBarCode(barCode);
             return ResponseEntity.ok(p);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
