@@ -17,4 +17,8 @@ public class NutriScore {
     private int lower_bound;
     private int upper_bound;
     private String color;
+
+    public NutriScore() {
+
+    }
 }
