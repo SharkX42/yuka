@@ -1,8 +1,12 @@
 package com.delmur.javapro.yuka.models.dto;
 
+import com.delmur.javapro.yuka.models.BasketAverage;
 import com.delmur.javapro.yuka.models.ProductResult;
 import com.sun.istack.NotNull;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 @Component
 public class Mapper {
@@ -24,5 +28,21 @@ public class Mapper {
 //    public Product toEntity(@NotNull ProductDTO productDTO) {
 //
 //    }
+
+    public BasketDTO toDto(@NotNull BasketAverage basketAverage) {
+        ArrayList<ProductDTO> listProductsDTO= new ArrayList<ProductDTO>();
+        for(ProductResult.Product p : basketAverage.getProducts())
+        {
+            listProductsDTO.add(toDto(p));
+        }
+
+        return BasketDTO.builder()
+                .average(basketAverage.getAverageNutriScore())
+                .classe(basketAverage.getNutriScoreClass().getClasse())
+                .color(basketAverage.getNutriScoreClass().getColor())
+                .products(listProductsDTO)
+                .build();
+    }
+
 }
 

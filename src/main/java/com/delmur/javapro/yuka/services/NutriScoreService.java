@@ -7,6 +7,8 @@ import com.delmur.javapro.yuka.repositories.IRuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NutriScoreService {
 
@@ -31,6 +33,20 @@ public class NutriScoreService {
 
     public NutriScore getNutritionScoreClass(int nutritionScore) {
         return nutriScoreRepository.getNutriScoreClass(nutritionScore);
+    }
+
+    public double getAverageNutriScore(List<ProductResult.Product> basket)
+    {
+        if(basket.size() != 0)
+        {
+            double average = 0.0;
+            for(ProductResult.Product product : basket)
+            {
+                average += product.getNutriScore();
+            }
+            return average/ basket.size();
+        }
+        return 0; //TODO : exception
     }
 
 }
