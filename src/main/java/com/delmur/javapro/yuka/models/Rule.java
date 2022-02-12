@@ -17,7 +17,7 @@ public class Rule {
 
     private int points;
 
-    private int min_bound;
+    private double min_bound;
 
     private String component;
 }

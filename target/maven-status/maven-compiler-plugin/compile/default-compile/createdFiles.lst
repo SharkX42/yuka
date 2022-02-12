@@ -1,0 +1,15 @@
+com\delmur\javapro\yuka\models\ProductResult.class
+com\delmur\javapro\yuka\models\dto\Mapper.class
+com\delmur\javapro\yuka\repositories\IRuleRepository.class
+com\delmur\javapro\yuka\services\NutriScoreService.class
+com\delmur\javapro\yuka\models\NutriScore.class
+com\delmur\javapro\yuka\repositories\INutriScoreRepository.class
+com\delmur\javapro\yuka\models\Basket.class
+com\delmur\javapro\yuka\models\ProductResult$Product.class
+com\delmur\javapro\yuka\models\dto\ProductDTO$ProductDTOBuilder.class
+com\delmur\javapro\yuka\controllers\ProductController.class
+com\delmur\javapro\yuka\services\OpenFoodFactService.class
+com\delmur\javapro\yuka\models\Rule.class
+com\delmur\javapro\yuka\services\ProductService.class
+com\delmur\javapro\yuka\models\dto\ProductDTO.class
+com\delmur\javapro\yuka\YukaApplication.class

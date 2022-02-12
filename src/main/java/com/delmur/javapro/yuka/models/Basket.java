@@ -1,10 +1,18 @@
 package com.delmur.javapro.yuka.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Basket {
+@Getter @Setter
+public class Basket implements Serializable {
 
     private String email;
-    private ArrayList<String> Products;
+    private ArrayList<String> products;
 
+    public Basket(){
+
+    }
 }
