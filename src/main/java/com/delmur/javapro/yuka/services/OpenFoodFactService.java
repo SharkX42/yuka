@@ -11,12 +11,15 @@ import org.springframework.web.client.RestTemplate;
 public class OpenFoodFactService {
     private String url = "https://fr.openfoodfacts.org/api/v0/produit/%s.json?fields=code,generic_name,product_name,saturated-fat_100g,energy_100g,sugars_100g,salt_100g,fiber_100g,proteins_100g";
 
-    public ProductResult.Product getByBarCode(String barCode) throws Exception {
+    public ProductResult.Product getByBarCode(String barCode) {
         RestTemplate restTemplate = new RestTemplate();
 
-        ProductResult product
-                = restTemplate.getForObject(String.format(url, barCode), ProductResult.class);
-
-        return product.getProduct();
+        try {
+            ProductResult product
+                    = restTemplate.getForObject(String.format(url, barCode), ProductResult.class);
+            return product.getProduct();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
