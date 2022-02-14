@@ -13,6 +13,11 @@ public class ProductResult implements Serializable {
     private String Code;
     private Product product;
 
+    public ProductResult(String code, Product product) {
+        Code = code;
+        this.product = product;
+    }
+
     @Getter @Setter
     public static class Product implements Serializable {
         private String Code;

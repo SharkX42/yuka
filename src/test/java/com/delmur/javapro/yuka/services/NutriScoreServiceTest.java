@@ -4,29 +4,37 @@ import com.delmur.javapro.yuka.models.NutriScore;
 import com.delmur.javapro.yuka.models.ProductResult;
 import com.delmur.javapro.yuka.repositories.INutriScoreRepository;
 import com.delmur.javapro.yuka.repositories.IRuleRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@SpringBootTest
-@ExtendWith(SpringExtension.class)
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@ExtendWith(MockitoExtension.class)
 public class NutriScoreServiceTest {
-    @MockBean
+
+    @Mock
     private IRuleRepository ruleRepository;
 
-    @MockBean
+    @Mock
     private INutriScoreRepository nutriScoreRepository;
 
-    @Autowired
+    @InjectMocks
     private NutriScoreService service;
 
-    @Test
-    void getNutriScoreTest() {
-        ProductResult.Product product = new ProductResult.Product("7622210449283",
+    private ArrayList<ProductResult.Product> list;
+
+    @BeforeEach
+    void setup() {
+        list = new ArrayList<>();
+
+        list.add(new ProductResult.Product("7622210449283",
                 1962,
                 4,
                 "BISCUITS FOURRÉS (35%) PARFUM CHOCOLAT",
@@ -36,15 +44,37 @@ public class NutriScoreServiceTest {
                 5.6,
                 32,
                 10,
-                new NutriScore(3, "Mangeable", 3, 10, "yellow"));
+                new NutriScore(3, "Mangeable", 3, 10, "yellow")));
 
-        Mockito.when(ruleRepository.getEnergyScore(Mockito.any(double.class))).thenReturn(5);
-        Mockito.when(ruleRepository.getSaturatedFlatScore(Mockito.any(double.class))).thenReturn(5);
-        Mockito.when(ruleRepository.getSugarScore(Mockito.any(double.class))).thenReturn(7);
-        Mockito.when(ruleRepository.getSaltScore(Mockito.any(double.class))).thenReturn(0);
-        Mockito.when(ruleRepository.getFiberScore(Mockito.any(double.class))).thenReturn(4);
-        Mockito.when(ruleRepository.getProteinScore(Mockito.any(double.class))).thenReturn(3);
+        list.add(new ProductResult.Product("737628064502",
+                1611,
+                1.9,
+                "Rice Noodles",
+                "Thai peanut noodle kit includes stir-fry rice noodles & thai peanut seasoning",
+                9.62,
+                0.72,
+                1.92,
+                13.46,
+                1,
+                new NutriScore(2, "Bon", 0, 2, "light green")));
+    }
 
-        assert service.getNutritionScore(product) == 10;
+    @Test
+    public void getNutriScoreTest() {
+
+        Mockito.when(ruleRepository.getEnergyScore(Mockito.any(Double.class))).thenReturn(5);
+        Mockito.when(ruleRepository.getSaturatedFlatScore(Mockito.any(Double.class))).thenReturn(5);
+        Mockito.when(ruleRepository.getSugarScore(Mockito.any(Double.class))).thenReturn(7);
+        Mockito.when(ruleRepository.getSaltScore(Mockito.any(Double.class))).thenReturn(0);
+        Mockito.when(ruleRepository.getFiberScore(Mockito.any(Double.class))).thenReturn(4);
+        Mockito.when(ruleRepository.getProteinScore(Mockito.any(Double.class))).thenReturn(3);
+
+        assertEquals(10, service.getNutritionScore(list.get(0)));
+    }
+
+    @Test
+    public void getAverageNutriScore() {
+        assertEquals(5.5, service.getAverageNutriScore(list));
+        assertEquals(0, service.getAverageNutriScore(new ArrayList<>()));
     }
 }
