@@ -2,6 +2,7 @@ package com.delmur.javapro.yuka.services;
 
 import com.delmur.javapro.yuka.models.NutriScore;
 import com.delmur.javapro.yuka.models.ProductResult;
+import com.delmur.javapro.yuka.models.Rule;
 import com.delmur.javapro.yuka.repositories.INutriScoreRepository;
 import com.delmur.javapro.yuka.repositories.IRuleRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -62,12 +63,12 @@ public class NutriScoreServiceTest {
     @Test
     public void getNutriScoreTest() {
 
-        Mockito.when(ruleRepository.getEnergyScore(Mockito.any(Double.class))).thenReturn(5);
-        Mockito.when(ruleRepository.getSaturatedFlatScore(Mockito.any(Double.class))).thenReturn(5);
-        Mockito.when(ruleRepository.getSugarScore(Mockito.any(Double.class))).thenReturn(7);
-        Mockito.when(ruleRepository.getSaltScore(Mockito.any(Double.class))).thenReturn(0);
-        Mockito.when(ruleRepository.getFiberScore(Mockito.any(Double.class))).thenReturn(4);
-        Mockito.when(ruleRepository.getProteinScore(Mockito.any(Double.class))).thenReturn(3);
+        Mockito.when(ruleRepository.getScoreFromNutrientName("energy_100g" , 1962)).thenReturn(new Rule( 5,  "N"));
+        Mockito.when(ruleRepository.getScoreFromNutrientName("saturated-fat_100g" , 5.6)).thenReturn(new Rule( 5,  "N"));
+        Mockito.when(ruleRepository.getScoreFromNutrientName("sugars_100g" , 32)).thenReturn(new Rule( 7,  "N"));
+        Mockito.when(ruleRepository.getScoreFromNutrientName("salt_100g" , 0.49)).thenReturn(new Rule( 0,  "N"));
+        Mockito.when(ruleRepository.getScoreFromNutrientName("fiber_100g" , 4)).thenReturn(new Rule( 4,  "P"));
+        Mockito.when(ruleRepository.getScoreFromNutrientName("proteins_100g" , 6.3)).thenReturn(new Rule( 3,  "P"));
 
         assertEquals(10, service.getNutritionScore(list.get(0)));
     }

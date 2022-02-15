@@ -1,6 +1,8 @@
 package com.delmur.javapro.yuka.services;
 
 import com.delmur.javapro.yuka.models.ProductResult;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,15 +18,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 @ExtendWith(MockitoExtension.class)
+
 public class OpenfoodFactServiceTest {
 
-    private String url = "https://fr.openfoodfacts.org/api/v0/produit/%s.json?fields=code,generic_name,product_name,saturated-fat_100g,energy_100g,sugars_100g,salt_100g,fiber_100g,proteins_100g";
+    private String url = "%s.json?";
 
     @Mock
     private RestTemplate restTemplate;
 
-    @InjectMocks
     private OpenFoodFactService service;
+
+    @BeforeEach
+    void setup() {
+        service = new OpenFoodFactService(restTemplate, url);
+    }
 
     @Test
     void getProductByBarCodeTest() {

@@ -14,17 +14,15 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class OpenFoodFactService {
-    /* TODO : Poser question pour savoir si c'est viable */
-//    @Value("${environments.dev.url}")
-//    private String url;
 
-    private String url = "https://fr.openfoodfacts.org/api/v0/produit/%s.json?fields=code,generic_name,product_name,saturated-fat_100g,energy_100g,sugars_100g,salt_100g,fiber_100g,proteins_100g";
+    private final String url;
 
     private final RestTemplate restTemplate;
 
     @Autowired
-    public OpenFoodFactService(@Lazy RestTemplate restTemplate) {
+    public OpenFoodFactService(@Lazy RestTemplate restTemplate, @Value("${environments.dev.url}") String url) {
         this.restTemplate = restTemplate;
+        this.url = url;
     }
 
     @Bean
@@ -38,7 +36,9 @@ public class OpenFoodFactService {
         try {
             ProductResult product
                     = restTemplate.getForObject(String.format(url, barCode), ProductResult.class);
-            return product.getProduct();
+            if (product != null)
+                return product.getProduct();
+            return null;
         } catch (Exception e) {
             return null;
         }
