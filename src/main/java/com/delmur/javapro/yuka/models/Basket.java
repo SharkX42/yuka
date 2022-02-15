@@ -15,4 +15,10 @@ public class Basket implements Serializable {
     public Basket(){
 
     }
+
+    public Basket(String email, ArrayList<String> products)
+    {
+        this.email = email;
+        this.products = products;
+    }
 }
