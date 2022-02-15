@@ -32,12 +32,21 @@ public class BasketService {
         }
 
         if (size == 0)
-            size = 1; //TODO : throw Exception
+            throw new BasketEmpty("The basket must not be empty");
 
         basketAverage.setAverageNutriScore(average / size);
         basketAverage.setNutriScoreClass(nutriScoreService.getNutritionScoreClass((int)average/size));
         return basketAverage;
     }
+}
 
+class BasketEmpty extends Exception {
 
+    public BasketEmpty() {
+        super();
+    }
+
+    public BasketEmpty(String s) {
+        super(s);
+    }
 }

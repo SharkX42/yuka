@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -25,4 +26,16 @@ public class BasketAverage {
         this.products = products;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BasketAverage)) return false;
+        BasketAverage that = (BasketAverage) o;
+        return Double.compare(that.getAverageNutriScore(), getAverageNutriScore()) == 0 && getNutriScoreClass().equals(that.getNutriScoreClass()) && getProducts().equals(that.getProducts());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAverageNutriScore(), getNutriScoreClass(), getProducts());
+    }
 }
