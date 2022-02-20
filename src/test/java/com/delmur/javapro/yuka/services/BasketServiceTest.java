@@ -1,5 +1,6 @@
 package com.delmur.javapro.yuka.services;
 
+import com.delmur.javapro.yuka.exceptions.BasketEmptyException;
 import com.delmur.javapro.yuka.models.Basket;
 import com.delmur.javapro.yuka.models.BasketAverage;
 import com.delmur.javapro.yuka.models.NutriScore;
@@ -83,7 +84,7 @@ public class BasketServiceTest {
 
         Basket basket = new Basket("test@test.fr", listProducts);
 
-        Exception exception = assertThrows(BasketEmpty.class, () -> {
+        Exception exception = assertThrows(BasketEmptyException.class, () -> {
             basketService.getBasketAverage(basket);
         });
 

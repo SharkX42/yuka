@@ -1,5 +1,6 @@
 package com.delmur.javapro.yuka.services;
 
+import com.delmur.javapro.yuka.exceptions.BasketEmptyException;
 import com.delmur.javapro.yuka.models.Basket;
 import com.delmur.javapro.yuka.models.BasketAverage;
 import com.delmur.javapro.yuka.models.ProductResult;
@@ -25,28 +26,17 @@ public class BasketService {
         double average = 0;
         int size = basket.getProducts().size();
 
+        if (size == 0)
+            throw new BasketEmptyException("The basket must not be empty");
+
         for(String barCode : basket.getProducts()) {
             product = productService.getProductByBarCode(barCode);
             average += product.getNutriScore();
             basketAverage.getProducts().add(product);
         }
 
-        if (size == 0)
-            throw new BasketEmpty("The basket must not be empty");
-
         basketAverage.setAverageNutriScore(average / size);
         basketAverage.setNutriScoreClass(nutriScoreService.getNutritionScoreClass((int)average/size));
         return basketAverage;
-    }
-}
-
-class BasketEmpty extends Exception {
-
-    public BasketEmpty() {
-        super();
-    }
-
-    public BasketEmpty(String s) {
-        super(s);
     }
 }

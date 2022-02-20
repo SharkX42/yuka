@@ -30,7 +30,7 @@ public class BasketController {
         try{
             return ResponseEntity.ok(mapper.toDto(basketService.getBasketAverage(basket)));
         } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.unprocessableEntity().build();
         }
     }
 }

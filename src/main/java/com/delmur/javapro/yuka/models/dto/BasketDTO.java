@@ -13,4 +13,11 @@ public class BasketDTO {
     private String classe;
     private String color;
     private ArrayList<ProductDTO> products;
+
+    public BasketDTO(double average, String classe, String color, ArrayList<ProductDTO> products) {
+        this.average = average;
+        this.classe = classe;
+        this.color = color;
+        this.products = products;
+    }
 }

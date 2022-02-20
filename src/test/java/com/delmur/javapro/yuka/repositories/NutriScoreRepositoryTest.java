@@ -23,8 +23,6 @@ public class NutriScoreRepositoryTest {
         assertEquals(3, repository.getNutriScoreClass(8).getId());
         assertEquals(4, repository.getNutriScoreClass(16).getId());
         assertEquals(5, repository.getNutriScoreClass(39).getId());
-
-
     }
 
 }
