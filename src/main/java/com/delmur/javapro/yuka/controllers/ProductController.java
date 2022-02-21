@@ -1,5 +1,6 @@
 package com.delmur.javapro.yuka.controllers;
 
+import com.delmur.javapro.yuka.models.ProductResult;
 import com.delmur.javapro.yuka.models.dto.Mapper;
 import com.delmur.javapro.yuka.models.dto.ProductDTO;
 import com.delmur.javapro.yuka.services.ProductService;
@@ -25,10 +26,10 @@ public class ProductController {
 
     @GetMapping("/{barCode}")
     public ResponseEntity<ProductDTO> getProductByBarCode(@PathVariable String barCode) {
-
-        try{
-            return ResponseEntity.ok(mapper.toDto(service.getProductByBarCode(barCode)));
-        } catch (Exception e) {
+        ProductResult.Product p = service.getProductByBarCode(barCode);
+        if (p != null) {
+            return ResponseEntity.ok(mapper.toDto(p));
+        } else {
             return ResponseEntity.notFound().build();
         }
     }

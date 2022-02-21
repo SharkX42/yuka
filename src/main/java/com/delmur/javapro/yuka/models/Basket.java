@@ -6,6 +6,8 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/* The class we will be receiving when a client wants to know information about it's basket */
+
 @Getter @Setter
 public class Basket implements Serializable {
 
@@ -14,5 +16,11 @@ public class Basket implements Serializable {
 
     public Basket(){
 
+    }
+
+    public Basket(String email, ArrayList<String> products)
+    {
+        this.email = email;
+        this.products = products;
     }
 }

@@ -25,9 +25,7 @@ public class Mapper {
                 .build();
     }
 
-//    public Product toEntity(@NotNull ProductDTO productDTO) {
-//
-//    }
+    //***********************************************************************************//
 
     public BasketDTO toDto(@NotNull BasketAverage basketAverage) {
         ArrayList<ProductDTO> listProductsDTO= new ArrayList<ProductDTO>();

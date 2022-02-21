@@ -1,4 +1,4 @@
-insert into rule(id, name, points, min_bound, component) values(1, 'energy_100g', 0, 0, 'N');
+insert into rule(id, name, points, min_bound, component) values(1, 'energy_100g', 0, -0.1, 'N');
 insert into rule(id, name, points, min_bound, component) values(2, 'energy_100g', 1, 335, 'N');
 insert into rule(id, name, points, min_bound, component) values(3, 'energy_100g', 2, 670, 'N');
 insert into rule(id, name, points, min_bound, component) values(4, 'energy_100g', 3, 1005, 'N');
@@ -10,7 +10,7 @@ insert into rule(id, name, points, min_bound, component) values(9, 'energy_100g'
 insert into rule(id, name, points, min_bound, component) values(10, 'energy_100g', 9, 3015, 'N');
 insert into rule(id, name, points, min_bound, component) values(11, 'energy_100g', 10, 3350, 'N');
 
-insert into rule(id, name, points, min_bound, component) values(21, 'saturated-fat_100g', 0, 0, 'N');
+insert into rule(id, name, points, min_bound, component) values(21, 'saturated-fat_100g', 0, -0.1, 'N');
 insert into rule(id, name, points, min_bound, component) values(22, 'saturated-fat_100g', 1, 1, 'N');
 insert into rule(id, name, points, min_bound, component) values(23, 'saturated-fat_100g', 2, 2, 'N');
 insert into rule(id, name, points, min_bound, component) values(24, 'saturated-fat_100g', 3, 3, 'N');
@@ -22,7 +22,7 @@ insert into rule(id, name, points, min_bound, component) values(29, 'saturated-f
 insert into rule(id, name, points, min_bound, component) values(30, 'saturated-fat_100g', 9, 9, 'N');
 insert into rule(id, name, points, min_bound, component) values(31, 'saturated-fat_100g', 10, 10, 'N');
 
-insert into rule(id, name, points, min_bound, component) values(32, 'sugars_100g', 0, 0, 'N');
+insert into rule(id, name, points, min_bound, component) values(32, 'sugars_100g', 0, -0.1, 'N');
 insert into rule(id, name, points, min_bound, component) values(33, 'sugars_100g', 1, 4.5, 'N');
 insert into rule(id, name, points, min_bound, component) values(34, 'sugars_100g', 2, 9, 'N');
 insert into rule(id, name, points, min_bound, component) values(35, 'sugars_100g', 3, 13.5, 'N');
@@ -34,7 +34,7 @@ insert into rule(id, name, points, min_bound, component) values(40, 'sugars_100g
 insert into rule(id, name, points, min_bound, component) values(41, 'sugars_100g', 9, 40, 'N');
 insert into rule(id, name, points, min_bound, component) values(42, 'sugars_100g', 10, 45, 'N');
 
-insert into rule(id, name, points, min_bound, component) values(51, 'salt_100g', 0, 0, 'N');
+insert into rule(id, name, points, min_bound, component) values(51, 'salt_100g', 0, -0.1, 'N');
 insert into rule(id, name, points, min_bound, component) values(52, 'salt_100g', 1, 90, 'N');
 insert into rule(id, name, points, min_bound, component) values(53, 'salt_100g', 2, 180, 'N');
 insert into rule(id, name, points, min_bound, component) values(54, 'salt_100g', 3, 270, 'N');
@@ -46,14 +46,14 @@ insert into rule(id, name, points, min_bound, component) values(59, 'salt_100g',
 insert into rule(id, name, points, min_bound, component) values(60, 'salt_100g', 9, 810, 'N');
 insert into rule(id, name, points, min_bound, component) values(61, 'salt_100g', 10, 900, 'N');
 
-insert into rule(id, name, points, min_bound, component) values(71, 'fiber_100g', 0, 0, 'P');
+insert into rule(id, name, points, min_bound, component) values(71, 'fiber_100g', 0, -0.1, 'P');
 insert into rule(id, name, points, min_bound, component) values(72, 'fiber_100g', 1, 0.9, 'P');
 insert into rule(id, name, points, min_bound, component) values(73, 'fiber_100g', 2, 1.9, 'P');
 insert into rule(id, name, points, min_bound, component) values(74, 'fiber_100g', 3, 2.8, 'P');
 insert into rule(id, name, points, min_bound, component) values(75, 'fiber_100g', 4, 3.7, 'P');
 insert into rule(id, name, points, min_bound, component) values(76, 'fiber_100g', 5, 4.7, 'P');
 
-insert into rule(id, name, points, min_bound, component) values(81, 'proteins_100g', 0, 0, 'P');
+insert into rule(id, name, points, min_bound, component) values(81, 'proteins_100g', 0, -0.1, 'P');
 insert into rule(id, name, points, min_bound, component) values(82, 'proteins_100g', 1, 1.6, 'P');
 insert into rule(id, name, points, min_bound, component) values(83, 'proteins_100g', 2, 3.2, 'P');
 insert into rule(id, name, points, min_bound, component) values(84, 'proteins_100g', 3, 4.8, 'P');

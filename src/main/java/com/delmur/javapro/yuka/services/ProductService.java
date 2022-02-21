@@ -16,12 +16,16 @@ public class ProductService {
         nutriScoreService = nservice;
     }
 
-    public ProductResult.Product getProductByBarCode(String barCode) throws Exception {
-
+    public ProductResult.Product getProductByBarCode(String barCode) {
+        /* Get the product via the API */
         ProductResult.Product product = openFoodFactService.getByBarCode(barCode);
-        product.setNutriScore(nutriScoreService.getNutritionScore(product));
 
-        product.setNutriScoreClass(nutriScoreService.getNutritionScoreClass(product.getNutriScore()));
+        /* If the product exists, we calculate its nutriscore */
+        if (product != null) {
+            product.setNutriScore(nutriScoreService.getNutritionScore(product));
+
+            product.setNutriScoreClass(nutriScoreService.getNutritionScoreClass(product.getNutriScore()));
+        }
 
         return product;
     }
