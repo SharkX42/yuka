@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
+/* Class NutriScore is used to determine in which category a nutriscore is (color, class...) */
+
 @Entity
 @Table(name = "nutrition_score")
 @Getter @Setter

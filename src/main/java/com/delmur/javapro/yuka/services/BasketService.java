@@ -29,6 +29,7 @@ public class BasketService {
         if (size == 0)
             throw new BasketEmptyException("The basket must not be empty");
 
+        /* for each product in the basket, we get the product's information and we update the average */
         for(String barCode : basket.getProducts()) {
             product = productService.getProductByBarCode(barCode);
             average += product.getNutriScore();

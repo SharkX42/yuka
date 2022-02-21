@@ -17,9 +17,10 @@ public class ProductService {
     }
 
     public ProductResult.Product getProductByBarCode(String barCode) {
-
+        /* Get the product via the API */
         ProductResult.Product product = openFoodFactService.getByBarCode(barCode);
 
+        /* If the product exists, we calculate its nutriscore */
         if (product != null) {
             product.setNutriScore(nutriScoreService.getNutritionScore(product));
 

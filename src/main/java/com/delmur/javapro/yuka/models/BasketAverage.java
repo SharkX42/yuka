@@ -6,6 +6,8 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/* Class used to store the data of a basket (average nutriscore, products information...) */
+
 @Getter
 @Setter
 public class BasketAverage {

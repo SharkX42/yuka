@@ -7,6 +7,8 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.Objects;
 
+/* This is the class we will get from OpenFoodFact Api's response */
+
 @Getter @Setter
 public class ProductResult implements Serializable {
 
@@ -50,6 +52,7 @@ public class ProductResult implements Serializable {
             return Objects.hash(getCode(), getEnergy_100g(), getFiber_100g(), getGeneric_name(), getProduct_name(), getProteins_100g(), getSalt_100g(), getSaturatedFat_100g(), getSugars_100g(), getNutriScore(), getNutriScoreClass());
         }
 
+        /* The class we will be manipulating to calculate nutriscore */
         public Product(String code,
                        double energy_100g,
                        double fiber_100g,
