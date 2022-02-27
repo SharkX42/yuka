@@ -25,7 +25,7 @@ public class BasketController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<BasketDTO> getProductByBarCode(@RequestBody Basket basket) {
+    public ResponseEntity<BasketDTO> getBasketAverageInformation(@RequestBody Basket basket) {
 
         try{
             return ResponseEntity.ok(mapper.toDto(basketService.getBasketAverage(basket)));
