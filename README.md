@@ -4,6 +4,8 @@ Ce readme a pour but de présenter les points que nous jugeons important de pré
 
 ## Architecture 
 
+Le SDK java que nous avons utilisé pour notre application est ***corretto-11***.
+
 ### Source
 
 Notre projet se décompose en plusieurs parties :
